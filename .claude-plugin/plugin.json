@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "genseo",
+  "displayName": "Genseo",
+  "version": "0.1.0",
+  "description": "Research keywords, create SEO content, and publish approved posts through Genseo.",
+  "author": {
+    "name": "Genseo",
+    "email": "support@genseo.co",
+    "url": "https://genseo.co"
+  },
+  "homepage": "https://docs.genseo.co/developers/overview",
+  "repository": "https://github.com/Genseo-co/genseo-mcp",
+  "keywords": [
+    "seo",
+    "content-marketing",
+    "keyword-research",
+    "publishing",
+    "mcp"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "defaultEnabled": false
+}

@@ -1,0 +1,30 @@
+{
+  "name": "genseo",
+  "version": "0.1.0",
+  "description": "Create, optimize, and publish SEO content through the Genseo remote MCP server.",
+  "author": {
+    "name": "Genseo",
+    "url": "https://genseo.co"
+  },
+  "homepage": "https://docs.genseo.co/developers/overview",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Genseo",
+    "shortDescription": "Manage SEO content through Genseo",
+    "longDescription": "Connect a project-bound Genseo account to inspect projects, manage keywords and drafts, configure publishing integrations, and publish approved content.",
+    "developerName": "Genseo",
+    "category": "Analytics",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://genseo.co",
+    "defaultPrompt": [
+      "Show my Genseo project and its keywords",
+      "Create an SEO article draft in Genseo",
+      "Check whether my publishing integration is ready"
+    ]
+  },
+  "mcpServers": "./.codex-mcp.json"
+}

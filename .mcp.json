@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "genseo": {
+      "type": "http",
+      "url": "https://api.genseo.co/mcp",
+      "headers": {
+        "Authorization": "Bearer ${GENSEO_API_KEY}"
+      }
+    }
+  }
+}
