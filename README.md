@@ -42,5 +42,6 @@ Then open `/mcp`, verify the `genseo` connection, and call `genseo_me` before us
 ## Documentation and support
 
 - Documentation: https://docs.genseo.co/developers/overview
-- Privacy policy: https://www.genseo.co/legal/privacy-policy
+- Developer integrations privacy: https://docs.genseo.co/developers/plugin-privacy
+- General privacy policy: https://www.genseo.co/legal/privacy-policy
 - Support: support@genseo.co
