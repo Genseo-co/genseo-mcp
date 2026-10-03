@@ -26,6 +26,15 @@ test('all installed client configs use OAuth without static credentials', () => 
     assert(!JSON.stringify(m).includes('GENSEO_API_KEY'));
   }
 });
+test('Cursor uses native remote HTTP config and the same endpoint as ChatGPT', () => {
+  const manifest = read('.cursor-plugin/plugin.json');
+  assert.equal(manifest.mcpServers, './mcp.json');
+  const cursor = read('mcp.json');
+  assert.deepEqual(cursor, { mcpServers: { genseo: { url: 'https://api.genseo.co/mcp' } } });
+  for (const path of ['.mcp.json', '.codex-mcp.json']) {
+    assert.deepEqual(read(path), { mcpServers: { genseo: { type: 'http', url: cursor.mcpServers.genseo.url } } });
+  }
+});
 test('optional developer configs remain separate and placeholders only', () => {
   assert.equal(read('examples/mcp-api-key.json').mcpServers.genseo.headers.Authorization,'Bearer ${GENSEO_API_KEY}');
   assert.equal(read('examples/codex-api-key.json').mcpServers.genseo.bearer_token_env_var,'GENSEO_API_KEY');

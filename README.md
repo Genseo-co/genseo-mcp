@@ -23,6 +23,8 @@ Install the plugin through Cursor's supported plugin installation flow, enable i
 
 Cursor submission documentation: https://cursor.com/docs/reference/plugins
 
+See [Cursor review checklist and form values](CURSOR-REVIEW.md) for the public listing and reproducible acceptance tests. The package reuses the ChatGPT server and OAuth flow, not private ChatGPT reviewer credentials or account fixtures.
+
 ## Other clients
 
 - `.claude-plugin/plugin.json` and `.mcp.json`: Claude plugin configuration
