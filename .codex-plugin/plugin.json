@@ -1,7 +1,7 @@
 {
   "name": "genseo",
-  "version": "0.1.1",
-  "description": "Create, optimize, and publish SEO content through the Genseo remote MCP server.",
+  "version": "0.2.0",
+  "description": "Connect Genseo to inspect AI visibility, tracked prompts, cited sources, competitors, SEO audits, issues and content.",
   "author": {
     "name": "Genseo",
     "url": "https://genseo.co"
@@ -10,10 +10,10 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Genseo",
-    "shortDescription": "Manage SEO content through Genseo",
-    "longDescription": "Connect a project-bound Genseo account to inspect projects, manage keywords and drafts, configure publishing integrations, and publish approved content.",
+    "shortDescription": "Track AI visibility and SEO",
+    "longDescription": "Connect your Genseo account, select an accessible project, inspect stored AI visibility, prompts, sources, audits, issues and posts, and perform authorized content workflows.",
     "developerName": "Genseo",
-    "category": "Analytics",
+    "category": "Data & Analytics",
     "capabilities": [
       "Interactive",
       "Read",
@@ -21,10 +21,11 @@
     ],
     "websiteURL": "https://genseo.co",
     "defaultPrompt": [
-      "Show my Genseo project and its keywords",
-      "Create an SEO article draft in Genseo",
-      "Check whether my publishing integration is ready"
+      "List my Genseo projects and ask which one to use.",
+      "Show stored AI visibility for my selected project.",
+      "List existing posts without making changes."
     ]
   },
-  "mcpServers": "./.codex-mcp.json"
+  "mcpServers": "./.codex-mcp.json",
+  "repository": "https://github.com/Genseo-co/genseo-mcp"
 }

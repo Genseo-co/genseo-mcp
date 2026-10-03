@@ -1,21 +1,22 @@
 ---
 name: genseo
-description: Use Genseo through its remote MCP server to inspect a project, research and manage keywords, create or update SEO article drafts, generate content, check publishing integrations, publish approved posts, and manage webhooks.
+description: Use Genseo through its remote MCP server to inspect AI visibility, tracked prompts, cited sources, competitors, projects, keywords, SEO drafts, audits, issues and publishing integrations.
 ---
 
 # Genseo
 
-Use the connected Genseo MCP tools instead of calling internal application routes or the database.
+Use the connected MCP tools, not internal routes or direct database access.
 
-## Workflow
+1. Call `genseo_me` and `genseo_projects_list` before project operations.
+2. Ask the user to select one accessible project unless the selection is already explicit. Never guess project IDs. Distinguish same-name projects by ID.
+3. Include the selected `project_id` with every project operation.
+4. For visibility questions start with `genseo_visibility_overview`; use prompt tools for requested prompt-level evidence.
+5. Default to stored reads. A request to inspect data does not authorize tracking, generation, crawls, audits or publishing.
+6. Read a post before modifying it; send only intentional changes. Check integrations before publishing and obtain confirmation unless autonomous publishing was explicitly authorized.
+7. Match answers to returned fields. Label pagination and partial lists. Do not invent missing measurements or treat API errors as empty results.
 
-1. Call `genseo_me` before any other Genseo tool.
-2. Use only the project returned by `genseo_me`; never guess or enumerate project IDs.
-3. Read an existing post before updating it and send only intentional changes.
-4. Prefer creating a draft before generating or publishing content.
-5. Check `genseo_integrations_list` before publishing.
-6. Ask for confirmation before `genseo_posts_publish` unless autonomous publishing was explicitly requested.
+Authorization and project-boundary restrictions are authoritative. OAuth does not expose billing, team management, credentials or project deletion. Writes require the relevant role, scopes and Agent Autonomy. Respect rate limits. `202 Accepted` means queued, not completed.
 
-Treat authorization and project-boundary errors as final. Back off on rate limits, and treat `202 Accepted` as successful queueing.
+General educational questions and unsupported billing or ad-budget requests do not require Genseo calls. Explain unsupported operations without attempting them.
 
-For endpoint details and error codes, use [the Genseo developer documentation](https://docs.genseo.co/developers/overview).
+Documentation: https://docs.genseo.co/developers/overview

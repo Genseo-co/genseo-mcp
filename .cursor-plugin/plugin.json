@@ -1,24 +1,21 @@
 {
-  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "genseo",
   "displayName": "Genseo",
   "version": "0.2.0",
   "description": "Connect Genseo to inspect AI visibility, tracked prompts, cited sources, competitors, SEO audits, issues and content.",
   "author": {
     "name": "Genseo",
-    "email": "support@genseo.co",
-    "url": "https://genseo.co"
+    "email": "support@genseo.co"
   },
-  "homepage": "https://docs.genseo.co/developers/overview",
+  "homepage": "https://www.genseo.co",
   "repository": "https://github.com/Genseo-co/genseo-mcp",
   "keywords": [
     "seo",
-    "content-marketing",
-    "keyword-research",
-    "publishing",
+    "ai-visibility",
+    "analytics",
     "mcp"
   ],
+  "logo": "assets/genseo-mark.png",
   "skills": "./skills/",
-  "mcpServers": "./.mcp.json",
-  "defaultEnabled": true
+  "mcpServers": "./mcp.json"
 }

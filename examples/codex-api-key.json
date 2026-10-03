@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "genseo": {
+      "type": "http",
+      "url": "https://api.genseo.co/mcp",
+      "bearer_token_env_var": "GENSEO_API_KEY"
+    }
+  }
+}

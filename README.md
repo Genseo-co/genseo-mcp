@@ -1,47 +1,73 @@
 # Genseo MCP
 
-Connect Claude, ChatGPT, Codex, and other MCP clients to Genseo for SEO keyword research, article drafting, content generation, publishing integrations, and approved publishing workflows.
+Connect Cursor, Claude, ChatGPT, Codex and other compatible MCP clients to Genseo. Inspect stored AI visibility, tracked prompts, cited sources, competitors, SEO audits, issues and posts. Authorized tools also support content and publishing workflows.
 
-## Remote MCP server
+## Remote server and authentication
 
-```text
-https://api.genseo.co/mcp
-```
+Endpoint: `https://api.genseo.co/mcp` (Streamable HTTP).
 
-The server uses Streamable HTTP. Each connection is bound to one Genseo project and only receives the permissions granted during authentication.
+Public plugin configurations use browser-based OAuth, with no static authorization header or API-key environment variable. Enable the Genseo connection in your client and complete the Genseo sign-in/consent flow. Approve only expected client names and permissions.
 
-## Plugin contents
+OAuth access follows your account's project membership, scopes, role and Agent Autonomy settings. Call `genseo_me` and `genseo_projects_list`, then explicitly select one accessible project before project operations. API keys, when used separately, are project-bound. Billing, team management, credentials and project deletion are not exposed.
 
-- `.claude-plugin/plugin.json` — Claude plugin metadata
-- `.codex-plugin/plugin.json` — ChatGPT and Codex plugin metadata
-- `.mcp.json` — Claude MCP configuration
-- `.codex-mcp.json` — Codex MCP configuration
-- `skills/genseo/SKILL.md` — shared Genseo workflow instructions
-- `skills/setup/SKILL.md` — connection troubleshooting instructions
+## Cursor
 
-## Developer authentication
+This repository uses the native Cursor Plugin format:
 
-Until the public OAuth flow is deployed, local development uses a project-bound Genseo API key.
+- `.cursor-plugin/plugin.json`: Cursor manifest and logo reference
+- `mcp.json`: remote MCP connection, automatically discovered or referenced by the manifest
+- `skills/`: workflow and setup instructions
+- `assets/genseo-mark.png`: square logo with background
 
-```bash
-export GENSEO_API_KEY="gs_live_..."
-```
+Install the plugin through Cursor's supported plugin installation flow, enable its MCP connection and authenticate through OAuth. Before marketplace submission, verify the real Cursor OAuth flow and the read-only scenarios below; package validation alone is not a client test.
 
-Never commit API keys or paste them into chat. Create keys with only the scopes required for the intended workflow.
+Cursor submission documentation: https://cursor.com/docs/reference/plugins
 
-## Claude Code development
+## Other clients
 
-Load the plugin directly from this repository:
+- `.claude-plugin/plugin.json` and `.mcp.json`: Claude plugin configuration
+- `.codex-plugin/plugin.json` and `.codex-mcp.json`: existing Codex compatibility configuration
+
+For Claude Code local loading:
 
 ```bash
 claude --plugin-dir .
 ```
 
-Then open `/mcp`, verify the `genseo` connection, and call `genseo_me` before using another tool.
+Inspect the Genseo connection in the client's MCP settings. Do not assume successful connection in one client proves another client's behavior.
 
-## Documentation and support
+## Optional API-key development
 
+OAuth is the default. For non-interactive development only, the former API-key configurations are retained under `examples/`; they are not loaded by the plugin manifests.
+
+Use a project-bound key with minimum scopes, stored only in your local environment or secret manager. Configure your developer client explicitly using the relevant example. Never commit a real key, paste it into chat or include it in a URL.
+
+## No-cost read-only verification
+
+Use existing stored data. Run each scenario in a fresh chat, list projects first and ask the user to select the intended project. Distinguish duplicate project names by ID.
+
+1. List my accessible Genseo projects and ask which one to use. Do not change anything.
+2. Show stored AI visibility for the last 30 days, competitors and cited sources. Do not start tracking or a recheck.
+3. List existing active visibility prompts. Do not create, edit, archive or track anything.
+4. Show existing audits and open SEO issues, prioritized by severity where available. Do not start an audit, crawl or recheck.
+5. List existing posts with titles and statuses. Do not create, generate, edit, schedule or publish anything.
+
+Responses must match the selected project's stored data. Clearly distinguish empty results from errors and label partial lists. These checks do not authorize paid provider jobs. Other tools can trigger billable actions or external writes; keep them outside this smoke test.
+
+## Local package validation
+
+```bash
+node --test scripts/plugin.test.mjs
+```
+
+These tests validate manifests, file paths, OAuth defaults and absence of bundled credentials. Real Cursor authentication and tool execution are a separate release gate.
+
+## Support
+
+- Website: https://www.genseo.co
 - Documentation: https://docs.genseo.co/developers/overview
-- Developer integrations privacy: https://docs.genseo.co/developers/plugin-privacy
-- General privacy policy: https://www.genseo.co/legal/privacy-policy
 - Support: support@genseo.co
+- Privacy: https://www.genseo.co/legal/privacy-policy
+- Terms: https://www.genseo.co/legal/terms
+
+This repository contains the client plugin only, not Genseo's application/backend source or customer project data.

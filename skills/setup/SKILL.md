@@ -1,15 +1,18 @@
 ---
 name: genseo-setup
-description: Configure or troubleshoot the Genseo remote MCP connection. Use when Genseo tools are disconnected, authentication is missing, or the user asks how to connect Genseo.
+description: Configure or troubleshoot the Genseo remote MCP connection for Cursor, Claude, ChatGPT, Codex or other compatible clients when tools are disconnected or authentication is missing.
 ---
 
 # Set up Genseo
 
-1. Create a project-bound API key in Genseo with only the scopes needed for the intended workflow.
-2. Set `GENSEO_API_KEY` in the environment that launches the MCP client. Never paste the key into chat, source files, or version control.
-3. Reload the plugin and verify the `genseo` MCP server connection.
-4. Call `genseo_me` and confirm that it returns the expected project before using another Genseo tool.
+1. Connect the remote MCP server at `https://api.genseo.co/mcp`.
+2. Use the client's browser-based OAuth flow. Approve only the expected client and permissions.
+3. Return to the client and inspect the Genseo connection in its MCP settings.
+4. Call `genseo_me` and `genseo_projects_list`, then explicitly select an accessible project before project operations.
 
-The current developer package uses a Bearer API key for local testing. The public marketplace release will use Genseo OAuth 2.0 instead.
+Default plugin files contain no API key or static Authorization header. Optional non-interactive API-key examples are kept separately under examples/ and must be selected explicitly. Never paste credentials into chat, public files or URLs.
 
-For setup details, use [the Genseo developer documentation](https://docs.genseo.co/developers/overview). Contact `support@genseo.co` if authentication fails after creating a new key.
+For authentication errors, reconnect through the client. Report discovery or authorization errors rather than inventing success or changing SQL/JWT settings. Use only free reads for diagnosis.
+
+Documentation: https://docs.genseo.co/developers/overview
+Support: support@genseo.co
