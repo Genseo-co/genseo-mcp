@@ -10,7 +10,7 @@ description: Configure or troubleshoot the Genseo remote MCP connection for Curs
 3. Return to the client and inspect the Genseo connection in its MCP settings.
 4. Call `genseo_me` and `genseo_projects_list`, then explicitly select an accessible project before project operations.
 
-Default plugin files contain no API key or static Authorization header. Optional non-interactive API-key examples are kept separately under examples/ and must be selected explicitly. Never paste credentials into chat, public files or URLs.
+Default plugin files contain no API key or static Authorization header. Never paste credentials into chat, public files or URLs.
 
 For authentication errors, reconnect through the client. Report discovery or authorization errors rather than inventing success or changing SQL/JWT settings. Use only free reads for diagnosis.
 

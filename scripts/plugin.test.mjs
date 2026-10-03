@@ -35,9 +35,10 @@ test('Cursor uses native remote HTTP config and the same endpoint as ChatGPT', (
     assert.deepEqual(read(path), { mcpServers: { genseo: { type: 'http', url: cursor.mcpServers.genseo.url } } });
   }
 });
-test('optional developer configs remain separate and placeholders only', () => {
-  assert.equal(read('examples/mcp-api-key.json').mcpServers.genseo.headers.Authorization,'Bearer ${GENSEO_API_KEY}');
-  assert.equal(read('examples/codex-api-key.json').mcpServers.genseo.bearer_token_env_var,'GENSEO_API_KEY');
+test('public package excludes internal review notes and unused API-key examples', () => {
+  for (const path of ['CURSOR-REVIEW.md', 'examples/mcp-api-key.json', 'examples/codex-api-key.json']) {
+    assert(!existsSync(resolve(root, path)), path);
+  }
 });
 test('skills have frontmatter and require explicit project selection', () => {
   for(const s of ['genseo','setup']){

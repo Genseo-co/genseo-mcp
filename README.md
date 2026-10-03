@@ -23,8 +23,6 @@ Install the plugin through Cursor's supported plugin installation flow, enable i
 
 Cursor submission documentation: https://cursor.com/docs/reference/plugins
 
-See [Cursor review checklist and form values](CURSOR-REVIEW.md) for the public listing and reproducible acceptance tests. The package reuses the ChatGPT server and OAuth flow, not private ChatGPT reviewer credentials or account fixtures.
-
 ## Other clients
 
 - `.claude-plugin/plugin.json` and `.mcp.json`: Claude plugin configuration
@@ -37,12 +35,6 @@ claude --plugin-dir .
 ```
 
 Inspect the Genseo connection in the client's MCP settings. Do not assume successful connection in one client proves another client's behavior.
-
-## Optional API-key development
-
-OAuth is the default. For non-interactive development only, the former API-key configurations are retained under `examples/`; they are not loaded by the plugin manifests.
-
-Use a project-bound key with minimum scopes, stored only in your local environment or secret manager. Configure your developer client explicitly using the relevant example. Never commit a real key, paste it into chat or include it in a URL.
 
 ## No-cost read-only verification
 
